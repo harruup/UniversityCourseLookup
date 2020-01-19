@@ -1,0 +1,17 @@
+body {
+    background-color: #000000
+}
+.container{
+    text-align: center;
+    width: 50%;
+    padding: 10px;
+    }
+.button{
+    padding: 10px;
+}
+
+#coursestaken{
+    width:20%;
+    height:150px;
+    bottom:0;
+}

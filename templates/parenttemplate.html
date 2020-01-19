@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parent Template</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='template.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+   </head>
+<body>
+<div class="jumbotron">
+    {% block content %}
+    {% endblock %}
+        <div class="container">
+           <strong><nav>Links
+                    <a href="{{ url_for('home') }}">Home  </a>
+                    <a href="{{ url_for('degreetree') }}">DegreeTree  </a>
+                    <a href="{{ url_for('about') }}">About  </a>
+            </nav></strong>
+        </div>
+</div>
+</body>
+</html>
