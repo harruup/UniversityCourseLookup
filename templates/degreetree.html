@@ -3,74 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Degree Tree</title>
-    <script type="text/javascript" src="{{ url_for('static', filename='degreetree.js') }}"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script type="text/javascript" src="{{ url_for('static', filename='degreetree.js') }}"></script>
     <script>
-       $(function() {
+         $(function() {
          var cour = {{courses | safe}};
          $("#cinput").autocomplete({
                     source: cour
-             });
-        });
-    </script>
-    <script>
-    $(document).ready(function(){
-        var options = [];
-        $("#addcourses").click(function(){
-        var option_val = $("#cinput").val();
-        if(option_val != "" && $('#coursestaken option[value="'+option_val+'"]').length == 0){
-            options.push(option_val);
-            $("#cinput").val('');
-            $("#coursestaken").append(new Option(option_val, option_val));
-        }
-        else{
-            alert("Course Already added or input empty")
-            $("#cinput").val('');
-        }
-         });
-        $("#removecourses").click(function(){
-        options = options.filter(function(elem){
-        		return elem != $("#coursestaken option:selected").val();
-        });
-
-        $("#coursestaken option:selected").remove();
-        });
-        $("#buildbutton").click(function(){
-        console.log(options);
-        $.post('{{ url_for('buildDegreeTree')}}',{x:options} )
-        });
+                    });
         });
     </script>
 
     <style>
         #coursestaken{
-            width:20%;
-        }
+            width:20%;}
         #cantakecourse{
-            width:20%;
-        }
+            width:20%;}
     </style>
 </head>
 <body>
-
     {% extends "parenttemplate.html" %}
     {% block content %}
-
     <h1>Lets build a Degree Tree</h1><br/>
-
-    <form action="{{ url_for('buildDegreeTree')}}" method="POST">
+    <form action="{{ url_for('buildDegreeTree')}}" method="POST" id="form">
            <div class="inputs">
                 {{form.cinput}}
                <input type="button" id="addcourses" class="btn btn-dark" value="ADD">
                <input type="button" id="removecourses" class="btn btn-dark" value="REMOVE"><br/><br/>
+            </div>
                 {{form.coursestaken}}
                 {{form.buildbutton}}<br/>
                 {{form.cantakecourse}}
-            </div>
     </form>
+
     <br/>
 
     {% endblock %}

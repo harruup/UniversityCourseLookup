@@ -16,7 +16,6 @@ def courses():
     if request.method == 'GET':
         results = []
         userinput = request.args.get('courseinput')
-        print(userinput)
         resultprereqs = dr.showPrerequisites(userinput)
         resultprereqsfor = dr.showPrerequisitesFor(userinput)
         results.append(" ".join(resultprereqs))
@@ -28,18 +27,16 @@ def degreetree():
     form = dtform(request.form)
     return render_template('degreetree.html',form=form, courses = allc)
 
-@app.route("/degreetree", methods=['GET','POST'])
+@app.route("/degreetree", methods=['POST'])
 def buildDegreeTree():
     form = dtform(request.form)
-    takenalready = request.form.getlist("x[]")
-    cantake = dr.canTakeCourse(takenalready)
-    cho = [(c, c) for c in takenalready]
-    form.cantakecourse.choices = cho
+    takenalreadystring = request.form["hidden"]
+    takenalready = takenalreadystring.split(",")
     print(takenalready)
-    print(cho)
-
+    cantake = dr.canTakeCourse(takenalready)
+    form.coursestaken.choices = [(t,t) for t in takenalready]
+    form.cantakecourse.choices = [(i,i) for i in cantake]
     return render_template('degreetree.html', form=form, courses=allc)
-
 
 @app.route("/about")
 def about():

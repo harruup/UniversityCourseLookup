@@ -1,3 +1,6 @@
+#This is scrapping script utilising selenium and Beautiful Soup
+
+from decimal import Decimal
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -65,13 +68,12 @@ def getCourseInfo(driver, links):
         paraheading = coursepagesoup.find('p', {"class": "heading"}).get_text()
         code = re.findall("[A-Z][A-Z]/[A-Z][A-Z][A-Z]* *[0-9][0-9][0-9][0-9]",paraheading).pop(0)
         course_code.append(code)
-        credits = re.findall("[0-9]\.[0-9]+", paraheading).pop(0)
+        credits = int(Decimal(re.findall("[0-9]\.[0-9]+", paraheading).pop(0)))
         course_credits.append(credits)
         stitle = re.split("[0-9]\.[0-9]+", paraheading)
         title = (stitle.pop(len(stitle) - 1)).strip()
         course_title.append(title)
-        courselist = zip(course_code, course_title, course_desc, course_credits)
-
+    courselist = zip(course_code, course_title, course_desc, course_credits)
     return courselist
 
 def addCoursestoDB(courselist):
@@ -81,9 +83,10 @@ def addCoursestoDB(courselist):
             db.create_courses_main(connection, course)
         connection.commit()
 
-def main():
+'''def main():
     driver = courseselection()
-    for i in range(1):
+
+    for i in range(175,optionsnum):
         print("Currently on option# "+str(i))
         links = getLinks(driver, i)
         courselist = getCourseInfo(driver, links)
@@ -92,4 +95,4 @@ def main():
         driver = courseselection()
 
 if __name__ == '__main__':
-    main()
+    main()'''

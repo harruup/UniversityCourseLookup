@@ -1,3 +1,4 @@
+from numpy import unicode
 from wtforms import Form, StringField, TextAreaField, SelectField,SelectMultipleField, SubmitField, validators
 #from wtforms.widgets import Input
 
@@ -8,6 +9,6 @@ class ButtonField(BooleanField):
 '''
 class degreeTreeInputForm(Form):
     cinput = StringField()
-    coursestaken = SelectMultipleField(choices=[])
+    coursestaken = SelectMultipleField(choices=[], coerce=str)
     buildbutton = SubmitField(u'Start Building')
-    cantakecourse = SelectMultipleField(choices=[])
+    cantakecourse = SelectMultipleField(choices=[], coerce=str)
