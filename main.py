@@ -25,18 +25,20 @@ def courses():
 @app.route("/degreetree", methods=['GET'])
 def degreetree():
     form = dtform(request.form)
-    return render_template('degreetree.html',form=form, courses = allc)
+    return render_template('degreetree.html',form=form, courses = allc, cantake={})
 
 @app.route("/degreetree", methods=['POST'])
 def buildDegreeTree():
     form = dtform(request.form)
     takenalreadystring = request.form["hidden"]
     takenalready = takenalreadystring.split(",")
-    print(takenalready)
     cantake = dr.canTakeCourse(takenalready)
+    cantakedict = {}
+    for c in cantake:
+        cantakedict[c] = dr.showCourseDesc(c)
     form.coursestaken.choices = [(t,t) for t in takenalready]
-    form.cantakecourse.choices = [(i,i) for i in cantake]
-    return render_template('degreetree.html', form=form, courses=allc)
+    #form.cantakecourse.choices = [(i,i) for i in cantake]
+    return render_template('degreetree.html', form=form, courses=allc, cantake = cantakedict)
 
 @app.route("/about")
 def about():

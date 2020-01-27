@@ -22,6 +22,12 @@
 
         $("#coursestaken option:selected").remove();
         });
+
+        $(".cantake").click(function(){
+            $("#coursestaken").append(new Option($(this).val(), $(this).val()));
+            options.push($(this).val());
+        });
+
         $("#form").submit(function(){
             $('#form').append('<input type="hidden" id="hidden" name="hidden" value="'+options+'" />');
         });

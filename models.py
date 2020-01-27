@@ -11,4 +11,4 @@ class degreeTreeInputForm(Form):
     cinput = StringField()
     coursestaken = SelectMultipleField(choices=[], coerce=str)
     buildbutton = SubmitField(u'Start Building')
-    cantakecourse = SelectMultipleField(choices=[], coerce=str)
+    #cantakecourse = SelectMultipleField(choices=[], coerce=str)

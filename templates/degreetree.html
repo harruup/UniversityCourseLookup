@@ -35,7 +35,10 @@
             </div>
                 {{form.coursestaken}}
                 {{form.buildbutton}}<br/>
-                {{form.cantakecourse}}
+               <!-- {{form.cantakecourse}}-->
+                {% for c in cantake.keys() %}
+                <button class="cantake" type="button" title="{{cantake.get(c)}}" value="{{c}}">{{c}}</button>
+                {% endfor %}
     </form>
 
     <br/>
