@@ -1,17 +1,120 @@
-body {
-    background-color: #000000
+html, body{
+         min-height: 100%;
 }
-.container{
-    text-align: center;
-    width: 50%;
-    padding: 10px;
-    }
+h1{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.maindiv{
+    background-color:white;
+    padding:10px;
+    height:80%;
+    position:relative;
+
+}
+
+.links-container{
+   font-size: 20px;
+   padding:10px;
+   bottom:0;
+   width:100%;
+   height:20vh;
+   overflow: hidden;
+   color:black;
+   background-color:teal;
+}
+.home-results{
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: justify;
+}
+.inner-home-results{
+    font-size: 18px;
+}
+a{
+    color:aliceblue;
+}
+a:hover{
+    color:aliceblue;
+}
+
 .button{
     padding: 10px;
 }
 
-#coursestaken{
-    width:20%;
+.btn.btn-dark{
+    word-wrap: break-word;
+    width: 100%;
+    max-width: 100%;
+    margin: 3px;
+}
+.btn.btn-light{
+    word-wrap: break-word;
+    width: 100%;
+    max-width: 100%;
+    margin: 3px;
+    border:2px solid #343A40;
+}
+.btn.btn-light:focus{
+        background-color:#343A40;
+        color: white;
+
+    }
+.coursesTaken{
+    position: relative;
+    width:100%;
     height:150px;
     bottom:0;
+    /*background-color:#e9ecef;*/
+    border:0px;
+    outline:0px;
 }
+.info-text{
+    margin-top: 1rem;
+    font-size: 20px;
+    font-weight: bold
+
+}
+.ui-tooltip-content{
+    font-size: 15.5px;
+    font-family: mono;
+}
+
+@media only screen and (min-width: 768px) {
+    .btn.btn-dark{
+        width:auto;
+    }
+    .btn.btn-light{
+        width:auto;
+    }
+    .btn.btn-light:hover{
+        background-color:#343A40;
+        color: white;
+
+    }
+    .coursesTaken{
+        height:100px;
+    }
+    .links-container{
+      position:absolute;
+      height:100px;
+      }
+      .maindiv{
+        height: 80vh;
+      }
+     body{
+       background-color:teal;
+    }
+    .ui-tooltip{
+        max-width: 400px;
+        margin-left: 0.8rem;
+
+    }
+}
+

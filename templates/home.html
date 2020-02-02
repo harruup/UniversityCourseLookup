@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="home">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -17,15 +17,31 @@
     </script>
 </head>
 <body>
-<div class="jumbotron">
-        <h1>Search for York Univerity courses</h1>
+    {% extends "parenttemplate.html" %}
+    {% block content %}
+
+     <h1>Search for York Univerity courses</h1>
+        <div class="formdiv">
             <form action="{{ url_for('courses')}}" method="GET">
             <input id="courseinput" name="courseinput" placeholder="Enter a course code" class="form-control"><br>
             <input type="submit" class="btn btn-dark" value="Search">
              </form>
-    {% extends "parenttemplate.html" %}
-    {% block content %}
+        </div>
+        <div class="home-results">
+        {% if results is defined and results|length > 0 %}
+
+                <p><b>Prerequisites:</b> {{results[0]}}</p>
+                <p><b>Required For: </b> {{results[1]}}</p>
+        {% else %}
+                <div class="inner-home-results">
+                <p><b> How to use this tool?</b></p>
+                <p>
+                    Search for a valid York University course code and it will tell you the pre-requisites for the course, and what future courses have this course as a pre-requisite.<br/>
+                </p>
+                 </div>
+        {% endif %}
+          </div>
     {% endblock %}
-</div>
+
 </body>
 </html>

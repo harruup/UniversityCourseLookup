@@ -2,14 +2,14 @@ from flask import Flask, render_template, request, jsonify
 import dataRetriever as dr
 import json
 from models import degreeTreeInputForm as dtform
-
+#Math 1310, 2011
 app = Flask(__name__)
 allcourses = dr.listCoursesOffered()
 allc = json.dumps(allcourses)
 
 @app.route("/")
 def home():
-        return render_template('home.html', courses = allc)
+        return render_template('home.html', results="",courses = allc)
 
 @app.route("/courses", methods=['GET', 'POST'])
 def courses():
@@ -20,7 +20,7 @@ def courses():
         resultprereqsfor = dr.showPrerequisitesFor(userinput)
         results.append(" ".join(resultprereqs))
         results.append(" ".join(resultprereqsfor))
-        return render_template('courses.html', results=results, courses = allc)
+        return render_template('home.html', results=results, courses = allc)
 
 @app.route("/degreetree", methods=['GET'])
 def degreetree():

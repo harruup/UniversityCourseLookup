@@ -15,32 +15,42 @@
                     });
         });
     </script>
+     <script>
+  $( function() {
+    $( document ).tooltip({
+        position: {
+        my: "center bottom",
+        at: "center top",
+    }
+    });
+  });
+  </script>
 
-    <style>
-        #coursestaken{
-            width:20%;}
-        #cantakecourse{
-            width:20%;}
-    </style>
 </head>
 <body>
     {% extends "parenttemplate.html" %}
     {% block content %}
-    <h1>Lets build a Degree Tree</h1><br/>
+    <h1>Lets build a Degree Tree</h1>
+    <div class="formdiv">
     <form action="{{ url_for('buildDegreeTree')}}" method="POST" id="form">
            <div class="inputs">
-                {{form.cinput}}
-               <input type="button" id="addcourses" class="btn btn-dark" value="ADD">
-               <input type="button" id="removecourses" class="btn btn-dark" value="REMOVE"><br/><br/>
+                {{form.cinput(class_="form-control", placeholder="Enter a course code")}}<br/>
+               <input type="button" id="addcourses" class="btn btn-dark" value="Add Course">
+               <input type="button" id="removecourses" class="btn btn-dark" value="Remove Course">
+               {{form.buildbutton(class_="btn btn-dark")}}<br/><br/>
             </div>
-                {{form.coursestaken}}
-                {{form.buildbutton}}<br/>
-               <!-- {{form.cantakecourse}}-->
-                {% for c in cantake.keys() %}
-                <button class="cantake" type="button" title="{{cantake.get(c)}}" value="{{c}}">{{c}}</button>
-                {% endfor %}
-    </form>
+                {{form.coursestaken(class_ = "coursesTaken")}}<br/>
 
+               <!-- {{form.cantakecourse}}-->
+                {% if cantake is defined and cantake|length > 0 %}
+                <div class="info-text"><p>Below are courses you can take:</p></div>
+                {% for c in cantake.keys() %}
+                <button class="btn btn-light" type="button" title="Course Description: {{cantake.get(c)}}" value="{{c}}">{{c}}</button>
+                {% endfor %}
+                {% endif %}
+
+    </form>
+    </div>
     <br/>
 
     {% endblock %}

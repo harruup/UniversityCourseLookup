@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <title>About Courses</title>
 </head>
-<body>
+<body class="about">
 {% extends "parenttemplate.html" %}
 {% block content %}
     <h1> About Courses</h1>
-    <p>You can check the course prereqs and also what courses this course is a prereq for</p>
-    <p>You can also build your degree tree in future</p>
+        <p><b>Home</b></p>
+        <p>You can check the course prereqs and also what courses this course is a prereq for</p>
+        <p><b>Degree Tree</b></p>
+        <p>You can also build your degree tree by adding the courses you have taken so far. Then we will tell you which courses you can take based on that info. Please note that this will not show the courses that requires no prerequisites. Results shown also gives you an overview of course description.<br/>
+        You can always verify that by searching a course on home page.</p>
 
     {% endblock %}
 </body>

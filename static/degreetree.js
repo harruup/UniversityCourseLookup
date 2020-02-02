@@ -23,10 +23,17 @@
         $("#coursestaken option:selected").remove();
         });
 
+        /*
+            Clicking on buttons will add the course to options list
         $(".cantake").click(function(){
-            $("#coursestaken").append(new Option($(this).val(), $(this).val()));
-            options.push($(this).val());
-        });
+            if($('#coursestaken option[value="'+$(this).val()+'"]').length == 0){
+                options.push($(this).val());
+                $("#coursestaken").append(new Option($(this).val(), $(this).val()));
+        }
+        else{
+            alert($(this).val()+" already added to the list")
+            }
+        });*/
 
         $("#form").submit(function(){
             $('#form').append('<input type="hidden" id="hidden" name="hidden" value="'+options+'" />');
