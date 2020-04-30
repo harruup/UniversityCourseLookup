@@ -1,5 +1,4 @@
 # UniversityCourseLookup
-Simple tool to look up York University courses, find out which courses you can take based on previously taken courses.
 
 Welcome to the UniversityCourseLookup wiki!
 
