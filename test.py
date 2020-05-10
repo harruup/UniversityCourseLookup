@@ -20,3 +20,5 @@ for p in prereq:
     courses.append(coursecode)
     prereqs.append(str(p))
     print(coursecode+"->"+p)
+
+

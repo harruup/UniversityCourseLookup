@@ -7,6 +7,8 @@ def showPrerequisites(coursecode):
     connection = db.create_connection(db.database)
     with connection:
         courselist= db.getPrerequisites(connection, coursecode)
+        if not courselist:
+            prereqs.append("No Prerequisites required for this course")
         for c in courselist:
             prereqs.append(str(c[0]))
     return prereqs
@@ -16,6 +18,8 @@ def showPrerequisitesFor(coursecode):
     connection = db.create_connection(db.database)
     with connection:
         courselist = db.getPrerequisteFor(connection, coursecode)
+        if not courselist:
+            prereqsfor.append("This course is not a pre-requisite for any course")
         for c in courselist:
             prereqsfor.append(str(c[0]))
     return prereqsfor

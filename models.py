@@ -1,4 +1,3 @@
-from numpy import unicode
 from wtforms import Form, StringField, TextAreaField, SelectField,SelectMultipleField, SubmitField, validators
 #from wtforms.widgets import Input
 

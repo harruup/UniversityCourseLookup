@@ -35,9 +35,13 @@
             }
         });*/
 
-        $("#form").submit(function(){
-            $('#form').append('<input type="hidden" id="hidden" name="hidden" value="'+options+'" />');
-        });
-
-
+        $("#buildbutton").click(function(){
+            if($('#coursestaken').has('option').length == 0){
+                alert("Please add a course")
+             }
+            else{
+                $('#form').append('<input type="hidden" id="hidden" name="hidden" value="'+options+'" />');
+                $("#form").submit();
+                }
+             });
         });

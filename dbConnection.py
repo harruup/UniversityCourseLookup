@@ -3,8 +3,9 @@
 import sqlite3
 from sqlite3 import Error
 
-#PATH TO LOCAL SQLITE APP: C:\Users\NAME\Downloads\SQLiteDatabaseBrowserPortable
-database = r"C:\Users\Harry\PycharmProjects\YORKUVXYZ_DB\coursesDB.db"
+#database = r"C:\Users\Harry\PycharmProjects\YORKUVXYZ_DB\coursesDB.db"
+
+database = r"/home/harry/PycharmProjects/UniversityCourseLookup_DB/coursesDB.db"
 def create_connection(db_file):
     conn = None
     try:
