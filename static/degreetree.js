@@ -11,7 +11,7 @@
             $("#coursestaken").append(new Option(option_val, option_val));
         }
         else{
-            alert("Course Already added or input empty")
+            $('#treeinputerror').html("Course Already added or input empty")
             $("#cinput").val('');
         }
          });
@@ -37,7 +37,7 @@
 
         $("#buildbutton").click(function(){
             if($('#coursestaken').has('option').length == 0){
-                alert("Please add a course")
+                $('#treeinputerror').html("Please add a course")
              }
             else{
                 $('#form').append('<input type="hidden" id="hidden" name="hidden" value="'+options+'" />');

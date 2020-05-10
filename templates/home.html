@@ -26,6 +26,7 @@
         <div class="formdiv">
             <form action="{{ url_for('courses')}}" method="GET">
             <input id="courseinput" name="courseinput" placeholder="Enter a course code" class="form-control"><br>
+                <p id="homeinputerror" class="text-danger"></p>
             <input type="button" id="submitsearch" class="btn btn-dark" value="Search">
              </form>
         </div>

@@ -35,6 +35,7 @@
     <form action="{{ url_for('buildDegreeTree')}}" method="POST" id="form">
            <div class="inputs">
                 {{form.cinput(class_="form-control", placeholder="Enter a course code")}}<br/>
+               <p id="treeinputerror" class="text-danger"></p>
                <input type="button" id="addcourses" class="btn btn-dark" value="Add Course">
                <input type="button" id="removecourses" class="btn btn-dark" value="Remove Course">
                <input type="button" id="buildbutton" class="btn btn-dark" value="Start Building">
